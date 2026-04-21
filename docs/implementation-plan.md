@@ -35,24 +35,25 @@
 
 **Copilot 対象外**。オーナーが手動で実施。
 
-- [ ] Cloudflare Pages プロジェクト作成
-- [ ] R2 バケット `receipts` 作成
-- [ ] AI Gateway 作成
+- [x] Cloudflare Pages プロジェクト作成
+- [x] R2 バケット `receipts` 作成
+- [x] AI Gateway 作成
   - Google AI Studio を BYOK で接続
   - フォールバック先 `gemini-2.5-flash` 設定
   - レートリミット: 月あたり上限を設定
-- [ ] SurrealDB Cloud インスタンス作成
+- [x] SurrealDB Cloud インスタンス作成
   - `docs/schema.surql` を適用
 - [ ] Cloudflare Access 設定
   - Google OAuth
   - 許可メール: オーナー本人のみ
-- [ ] Secrets 登録（Pages / Worker）:
+- [x] Secrets 登録（Pages / Worker）:
   - `GEMINI_API_KEY`
   - `AI_GATEWAY_URL`
   - `SURREAL_URL`
   - `SURREAL_NS`
   - `SURREAL_DB`
-  - `SURREAL_TOKEN`
+  - `SURREAL_USERNAME`
+  - `SURREAL_PASSWORD`
 
 **DoD**: 上記リソースの ID・URL が `docs/infrastructure.md`（別途作成）にまとめられている。
 

@@ -33,6 +33,7 @@
 | [docs/wireframes.md](docs/wireframes.md) | 全画面のワイヤーフレーム |
 | [docs/schema.surql](docs/schema.surql) | SurrealDB スキーマ（SoT） |
 | [docs/implementation-plan.md](docs/implementation-plan.md) | フェーズ分けされた実装進行プラン |
+| [docs/infrastructure.md](docs/infrastructure.md) | 非秘密のインフラ設定メモ |
 
 ## 開発セットアップ
 
@@ -50,7 +51,8 @@ npm run dev
 - `GEMINI_API_KEY` — Google AI Studio
 - `GEMINI_MODEL` — 既定は `gemini-3-flash-preview`、将来差し替え可能
 - `AI_GATEWAY_URL` — Cloudflare AI Gateway エンドポイント
-- `SURREAL_URL` / `SURREAL_NS` / `SURREAL_DB` / `SURREAL_TOKEN`
+- `SURREAL_URL` / `SURREAL_NS` / `SURREAL_DB`
+- `SURREAL_USERNAME` / `SURREAL_PASSWORD`
 - R2 バインディングは `wrangler.toml` 側で設定
 
 ### スクリプト
