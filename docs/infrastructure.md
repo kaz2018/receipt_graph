@@ -1,6 +1,6 @@
 # インフラ設定メモ
 
-最終更新: 2026-04-21
+最終更新: 2026-04-22
 
 このファイルには **秘密ではない設定値** と、手動セットアップ時の参照情報だけを記録する。  
 API キーやパスワードそのものはコミットしない。
@@ -13,65 +13,65 @@ API キーやパスワードそのものはコミットしない。
 
 ## Cloudflare Pages
 
-| 項目 | 値 | メモ |
-|---|---|---|
-| Project | `receipt_graph` | GitHub リポジトリ `kaz2018/receipt_graph` を接続 |
-| Production branch | `main` | `main` push でデプロイ |
+| 項目              | 値              | メモ                                             |
+| ----------------- | --------------- | ------------------------------------------------ |
+| Project           | `receipt_graph` | GitHub リポジトリ `kaz2018/receipt_graph` を接続 |
+| Production branch | `main`          | `main` push でデプロイ                           |
 
 ## R2
 
-| 項目 | 値 | メモ |
-|---|---|---|
-| Bucket name | `receipts` | レシート画像保存用 |
-| Binding name | `RECEIPTS_BUCKET` | Pages / Worker から参照する環境名 |
-| Public access | `off` | 画像は公開しない |
-| Object key format | `receipts/yyyy/mm/{uuid}.webp` | 圧縮後のみ保存 |
+| 項目              | 値                             | メモ                              |
+| ----------------- | ------------------------------ | --------------------------------- |
+| Bucket name       | `receipts`                     | レシート画像保存用                |
+| Binding name      | `RECEIPTS_BUCKET`              | Pages / Worker から参照する環境名 |
+| Public access     | `off`                          | 画像は公開しない                  |
+| Object key format | `receipts/yyyy/mm/{uuid}.webp` | 圧縮後のみ保存                    |
 
 ## AI Gateway
 
-| 項目 | 値 | メモ |
-|---|---|---|
-| Gateway name | `receipt-graph` | Cloudflare AI Gateway 名 |
-| Endpoint URL | `https://gateway.ai.cloudflare.com/v1/f0c68089f1c1d003bd7fdd01000673e8/receipt-graph/compat` | `AI_GATEWAY_URL` に設定 |
-| Default Gemini model | `gemini-3-flash-preview` | `GEMINI_MODEL` に設定 |
-| Fallback model | `gemini-2.5-flash` | Gateway 側で設定予定 |
+| 項目                 | 値                                                                                           | メモ                     |
+| -------------------- | -------------------------------------------------------------------------------------------- | ------------------------ |
+| Gateway name         | `receipt-graph`                                                                              | Cloudflare AI Gateway 名 |
+| Endpoint URL         | `https://gateway.ai.cloudflare.com/v1/f0c68089f1c1d003bd7fdd01000673e8/receipt-graph/compat` | `AI_GATEWAY_URL` に設定  |
+| Default Gemini model | `gemini-3-flash-preview`                                                                     | `GEMINI_MODEL` に設定    |
+| Fallback model       | `gemini-2.5-flash`                                                                           | Gateway 側で設定予定     |
 
 ## SurrealDB Cloud
 
-| 項目 | 値 | メモ |
-|---|---|---|
-| URL | `https://surreal-dragon-06emvh2un1o932cjgupvfh8eno.aws-aps1.surreal.cloud/` | `SURREAL_URL` |
-| Namespace | `receipt_graph` | `SURREAL_NS` |
-| Database | `app` | `SURREAL_DB` |
-| Username | `app-server` | `SURREAL_USERNAME` に設定 |
-| Password | Secret | `SURREAL_PASSWORD` に設定 |
-| Schema file | `docs/schema.surql` | 適用済み |
+| 項目        | 値                                                                          | メモ                      |
+| ----------- | --------------------------------------------------------------------------- | ------------------------- |
+| URL         | `https://surreal-dragon-06emvh2un1o932cjgupvfh8eno.aws-aps1.surreal.cloud/` | `SURREAL_URL`             |
+| Namespace   | `receipt_graph`                                                             | `SURREAL_NS`              |
+| Database    | `app`                                                                       | `SURREAL_DB`              |
+| Username    | `app-server`                                                                | `SURREAL_USERNAME` に設定 |
+| Password    | Secret                                                                      | `SURREAL_PASSWORD` に設定 |
+| Schema file | `docs/schema.surql`                                                         | 適用済み                  |
 
 ## Cloudflare Access
 
-| 項目 | 値 | メモ |
-|---|---|---|
-| Identity provider | Google OAuth | オーナー本人のみ許可 |
-| Protected routes | `<to be filled>` | Pages 全体を保護予定 |
+| 項目              | 値               | メモ                 |
+| ----------------- | ---------------- | -------------------- |
+| Identity provider | Google OAuth     | オーナー本人のみ許可 |
+| Protected routes  | `<to be filled>` | Pages 全体を保護予定 |
 
 ## Pages / Worker に入れる設定
 
 ### Variables
 
-| 名前 | 用途 |
-|---|---|
-| `AI_GATEWAY_URL` | Cloudflare AI Gateway の compat endpoint |
-| `GEMINI_MODEL` | 利用する Gemini モデル名 |
-| `SURREAL_URL` | SurrealDB 接続先 URL |
-| `SURREAL_NS` | SurrealDB namespace |
-| `SURREAL_DB` | SurrealDB database |
-| `SURREAL_USERNAME` | SurrealDB 接続ユーザー名 |
+| 名前               | 用途                                     |
+| ------------------ | ---------------------------------------- |
+| `AI_GATEWAY_URL`   | Cloudflare AI Gateway の compat endpoint |
+| `GEMINI_MODEL`     | 利用する Gemini モデル名                 |
+| `SURREAL_URL`      | SurrealDB 接続先 URL                     |
+| `SURREAL_NS`       | SurrealDB namespace                      |
+| `SURREAL_DB`       | SurrealDB database                       |
+| `SURREAL_USERNAME` | SurrealDB 接続ユーザー名                 |
 
 ### Secrets
 
-| 名前 | 用途 |
-|---|---|
-| `GEMINI_API_KEY` | Google AI Studio API キー |
+| 名前               | 用途                               |
+| ------------------ | ---------------------------------- |
+| `GEMINI_API_KEY`   | Google AI Studio API キー          |
 | `SURREAL_PASSWORD` | SurrealDB 接続ユーザーのパスワード |
 
 ## セットアップ後の確認項目
@@ -108,3 +108,9 @@ API キーやパスワードそのものはコミットしない。
 - `New access method` の `Record` / `JWT` は今回の用途には使わない
 - `app-server` の role は CRUD が必要なため `Editor` を使う
 - SurrealDB のクエリ結果には `PASSHASH` が出ることがあるので、その出力全文は公開場所に貼らない
+
+### SvelteKit scaffold
+
+- 現行の SvelteKit 初期化コマンドは `npm create svelte@latest` ではなく `npx sv create`
+- 古い案内に従うと `npm create svelte' has been replaced with 'npx sv create'` と表示されるので、その場合は `npx sv create .` に読み替えて進める
+- scaffold 実行時に `.gitignore` を上書きすると、`.dev.vars*` や `docs/infrastructure.local.md` の除外が落ちることがあるため、実行後に差分確認する

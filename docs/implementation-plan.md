@@ -21,6 +21,7 @@
 **目的**: Copilot が読み取れる土台を作る。
 
 タスク:
+
 - [x] `README.md` に概要とスタック
 - [x] `.editorconfig`
 - [x] `.gitignore` (Node, SvelteKit, Wrangler)
@@ -62,7 +63,8 @@
 ## フェーズ 2: SvelteKit 初期化
 
 タスク:
-- [ ] `npm create svelte@latest` で初期化（TypeScript / ESLint / Prettier / Vitest 有効）
+
+- [ ] `npx sv create` で初期化（TypeScript / ESLint / Prettier / Vitest 有効）
 - [ ] `@sveltejs/adapter-cloudflare` 導入
 - [ ] Tailwind CSS 導入（スマホ優先UI）
 - [ ] `wrangler.toml` 作成（R2 バインディング、環境変数マッピング）
@@ -101,6 +103,7 @@
 - [ ] `GET /api/export?format=csv|json`
 
 **DoD**:
+
 - 各エンドポイントに Vitest の統合テスト（SurrealDB / R2 / Gemini は MSW or モック）
 - エラー時のレスポンス形状統一（`{ error: string, code: string }`）
 

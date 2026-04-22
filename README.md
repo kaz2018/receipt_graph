@@ -13,27 +13,27 @@
 
 ## 技術スタック
 
-| 層 | 採用 |
-|---|---|
-| Frontend | SvelteKit + TypeScript + Tailwind CSS |
-| Hosting | Cloudflare Pages + Pages Functions |
-| 画像圧縮 | Cloudflare Workers（クライアント先行縮小 + Worker で WebP 化） |
-| 画像ストレージ | Cloudflare R2（圧縮後のみ保存） |
-| AI/OCR | Google AI Studio `gemini-3-flash-preview`（AI Gateway 経由） |
-| DB | SurrealDB Cloud |
-| 認証 | Cloudflare Access (Google OAuth、オーナー単独利用) |
+| 層             | 採用                                                           |
+| -------------- | -------------------------------------------------------------- |
+| Frontend       | SvelteKit + TypeScript + Tailwind CSS                          |
+| Hosting        | Cloudflare Pages + Pages Functions                             |
+| 画像圧縮       | Cloudflare Workers（クライアント先行縮小 + Worker で WebP 化） |
+| 画像ストレージ | Cloudflare R2（圧縮後のみ保存）                                |
+| AI/OCR         | Google AI Studio `gemini-3-flash-preview`（AI Gateway 経由）   |
+| DB             | SurrealDB Cloud                                                |
+| 認証           | Cloudflare Access (Google OAuth、オーナー単独利用)             |
 
 ## ドキュメント
 
 実装・仕様に関わるすべては `docs/` に集約しています。**Copilot に作業を依頼する際は必ず該当ドキュメントをコンテキストに含めてください。**
 
-| ファイル | 内容 |
-|---|---|
-| [docs/requirements.md](docs/requirements.md) | 要件定義（機能・非機能・スコープ） |
-| [docs/wireframes.md](docs/wireframes.md) | 全画面のワイヤーフレーム |
-| [docs/schema.surql](docs/schema.surql) | SurrealDB スキーマ（SoT） |
-| [docs/implementation-plan.md](docs/implementation-plan.md) | フェーズ分けされた実装進行プラン |
-| [docs/infrastructure.md](docs/infrastructure.md) | 非秘密のインフラ設定メモ |
+| ファイル                                                   | 内容                               |
+| ---------------------------------------------------------- | ---------------------------------- |
+| [docs/requirements.md](docs/requirements.md)               | 要件定義（機能・非機能・スコープ） |
+| [docs/wireframes.md](docs/wireframes.md)                   | 全画面のワイヤーフレーム           |
+| [docs/schema.surql](docs/schema.surql)                     | SurrealDB スキーマ（SoT）          |
+| [docs/implementation-plan.md](docs/implementation-plan.md) | フェーズ分けされた実装進行プラン   |
+| [docs/infrastructure.md](docs/infrastructure.md)           | 非秘密のインフラ設定メモ           |
 
 ## 開発セットアップ
 
